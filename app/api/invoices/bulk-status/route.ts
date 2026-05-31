@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
             bankId,
             category: defaultCategory,
             amount: amountToCredit,
-            description: description || `Payment received for invoice ${inv.lrNo}`,
+            description: description || `Invoice No/LR No: ${inv.lrNo} | Payment received`,
             date: nowDate,
           });
           await income.save();
@@ -153,8 +153,8 @@ export async function POST(request: NextRequest) {
         transactionId,
         type: 'INCOME',
         description: description || (subTransactions.length === 1
-          ? `Payment received for Invoice ${lrNumbers}`
-          : `Bulk Invoice Payment - ${subTransactions.length} invoices (${lrNumbers})`),
+          ? `Invoice No/LR No: ${lrNumbers} | Payment received`
+          : `Bulk Invoice Payment | ${subTransactions.length} invoices (Invoice No/LR No: ${lrNumbers})`),
         amount: amountToAddToBank,
         toBankId: bankId,
         appUserId,

@@ -12,8 +12,6 @@ const locationSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-locationSchema.index({ locationName: 1 }, { unique: true });
-
 const Location =
   mongoose.models.Location || mongoose.model("Location", locationSchema);
 
